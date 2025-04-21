@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dermatology Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Skin Disease Predictor</h1>
+        <form method="POST" action="/predict">
+            <input type="number" name="age" placeholder="Age" required>
+            <input type="number" name="erythema" placeholder="Erythema (0–3)" min="0" max="3" required>
+            <input type="number" name="scaling" placeholder="Scaling (0–3)" min="0" max="3" required>
+            <input type="number" name="definite_borders" placeholder="Definite Borders (0–3)" min="0" max="3" required>
+            <input type="number" name="itching" placeholder="Itching (0–3)" min="0" max="3" required>
+            <input type="number" name="koebner" placeholder="Koebner Phenomenon (0–3)" min="0" max="3" required>
+            <input type="number" name="family_history" placeholder="Family History (0 or 1)" min="0" max="1" required>
+            <input type="number" name="scalp_involvement" placeholder="Scalp Involvement (0–3)" min="0" max="3" required>
+            <input type="number" name="follicular_papules" placeholder="Follicular Papules (0–3)" min="0" max="3" required>
+            <input type="number" name="acanthosis" placeholder="Acanthosis (0–3)" min="0" max="3" required>
+
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+            <p class="result">{{ prediction_text }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
